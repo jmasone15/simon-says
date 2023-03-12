@@ -1,16 +1,10 @@
-// Pseudo-Code Plan
-// 1. Click Start Button Event Listener (hide start button show score)
-// 2. Generate first color to flash
-// 3. Function to flash the generated color
-// 4. Event Listener for User Input
-// 5. Check if answer is correct
-// 6a. If correct, update score.
-// 7a. Generate color again
-// 8a. Flash all previous colors and new color
-// 9a. Listen to user inputs based on number of inputs
-// 10a. Repeat process starting from 6a.
-// 6b. Present score and disable event listeners.
-// 7b. Show start button hide score
+// TODO List
+// Button Click effect on divs
+// Sound effects
+// Mobile Dev
+// Background Customization
+// Simon Color Changing
+// Database High Score
 
 const startBtn = document.getElementById("start");
 const countEl = document.getElementById("count");
@@ -57,7 +51,7 @@ const flashColor = async (number) => {
 
     await delay(500);
     colorTarget.setAttribute("class", "button button-highlight");
-    await delay(1000);
+    await delay(750);
     colorTarget.setAttribute("class", "button");
 }
 
@@ -69,6 +63,7 @@ const gameFunction = async () => {
     userTurn = false
 
     generateColor();
+    await delay(500);
     for (let i = 0; i < gameArray.length; i++) {
         await flashColor(gameArray[i]);
     }
