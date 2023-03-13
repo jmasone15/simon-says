@@ -153,32 +153,31 @@ body {
     }
     .button {
         border: solid black 10px;
+        height: 50vh;
+        width: 50vw;
         min-height: 50vh;
         min-width: 50vw;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0px;
     }
     #left-top {
         background-color: green;
         border-radius: 0;
-        border-width: 5px;
     }
     #right-top {
         background-color: red;
         border-radius: 0;
-        border-width: 5px;
     }
     #left-bottom {
         background-color: yellow;
         border-radius: 0;
-        border-width: 5px;
     }
     #right-bottom {
         background-color: blue;
         border-radius: 0;
-        border-width: 5px;
     }
     .start-circle {
         border-radius: 50%;
