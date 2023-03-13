@@ -1,5 +1,4 @@
 // TODO List
-// Sound effects
 // Mobile Dev
 // Background Customization
 // Simon Color Changing
