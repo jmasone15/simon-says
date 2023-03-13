@@ -1,5 +1,4 @@
 // TODO List
-// Button Click effect on divs
 // Sound effects
 // Mobile Dev
 // Background Customization
@@ -12,6 +11,7 @@ const leftTopEl = document.getElementById("left-top");
 const rightTopEl = document.getElementById("right-top");
 const leftBottomEl = document.getElementById("left-bottom");
 const rightBottomEl = document.getElementById("right-bottom");
+const audio = new Audio("./assets/note_three.mp3");
 
 let elementArray = [leftTopEl, rightTopEl, leftBottomEl, rightBottomEl];
 let gameArray = [];
@@ -51,6 +51,7 @@ const flashColor = async (number) => {
 
     await delay(500);
     colorTarget.setAttribute("class", "button button-highlight");
+    audio.play();
     await delay(750);
     colorTarget.setAttribute("class", "button");
 }
