@@ -1,9 +1,7 @@
 // TODO List
-// Mobile Dev
 // Background Customization
 // Simon Color Changing
 // Database High Score
-// Weird issue with mobile audio
 
 const startBtn = document.getElementById("start");
 const countEl = document.getElementById("count");
@@ -107,9 +105,11 @@ const gameFunction = async () => {
         await flashColor(gameArray[i]);
     }
 
-    elementArray.forEach(element => {
-        element.setAttribute("class", "button button-enable")
-    });
+    if (!isMobile) {
+        elementArray.forEach(element => {
+            element.setAttribute("class", "button button-enable")
+        });
+    }
 
     userTurn = true;
 }
