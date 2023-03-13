@@ -148,15 +148,16 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        width: 100vw;
+        height: 90vh;
+        width: 90vw;
+        overflow: hidden;
     }
     .button {
         border: solid black 10px;
-        height: 45vh;
-        width: 45vw;
-        min-height: 45vh;
-        min-width: 45vw;
+        height: 50vh;
+        width: 50vw;
+        min-height: 50vh;
+        min-width: 50vw;
         text-align: center;
         display: flex;
         justify-content: center;
