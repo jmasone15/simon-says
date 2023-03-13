@@ -77,14 +77,20 @@ const getElementByNumber = (number, elementType) => {
     }
 }
 
-const flashColor = async (number) => {
+const flashColor = async (number, delayBool) => {
     let colorTarget = getElementByNumber(number, "color");
     let audioTarget = getElementByNumber(number, "audio");
 
-    await delay(500);
+    if (delayBool) {
+        await delay(500);
+    }
     colorTarget.setAttribute("class", "button button-highlight");
     duplicateAndPlayAudio(audioTarget);
-    await delay(750);
+    if (delayBool) {
+        await delay(750);
+    } else {
+        await delay(250)
+    }
     colorTarget.setAttribute("class", "button");
 }
 
@@ -102,28 +108,29 @@ const gameFunction = async () => {
     }
 
     for (let i = 0; i < gameArray.length; i++) {
-        await flashColor(gameArray[i]);
+        await flashColor(gameArray[i], true);
     }
 
     if (!isMobile) {
         elementArray.forEach(element => {
-            element.setAttribute("class", "button button-enable")
+            element.setAttribute("class", "button button-enable");
         });
     }
+
+    countEl.focus()
 
     userTurn = true;
 }
 
-const userResponse = ({ target }) => {
+const userResponse = async ({ target }) => {
     if (!userTurn) {
         return;
     }
 
     const clickedNum = target.getAttribute("number");
+    await flashColor(clickedNum, false);
 
     if (gameArray[userClickCount] == clickedNum) {
-        let audioTarget = getElementByNumber(clickedNum, "audio");
-        duplicateAndPlayAudio(audioTarget);
         userClickCount++
 
         if (gameArray.length === userClickCount) {
