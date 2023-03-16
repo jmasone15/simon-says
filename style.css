@@ -148,10 +148,10 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         width: 100vw;
         overflow: hidden;
     }
+
     .button {
         border: solid black 10px;
         height: 50vh;
@@ -164,22 +164,27 @@ body {
         align-items: center;
         padding: 0px;
     }
+
     #left-top {
         background-color: green;
         border-radius: 0;
     }
+
     #right-top {
         background-color: red;
         border-radius: 0;
     }
+
     #left-bottom {
         background-color: yellow;
         border-radius: 0;
     }
+
     #right-bottom {
         background-color: blue;
         border-radius: 0;
     }
+
     .start-circle {
         border-radius: 50%;
         position: fixed;
@@ -197,4 +202,4 @@ body {
         border: 5px solid black;
         z-index: 2;
     }
-  }
+}

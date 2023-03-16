@@ -2,7 +2,9 @@
 // Background Customization
 // Simon Color Changing
 // Database High Score
+// Fix Sounds
 
+const containerEl = document.getElementById("window-height");
 const startBtn = document.getElementById("start");
 const countEl = document.getElementById("count");
 const leftTopEl = document.getElementById("left-top");
@@ -29,6 +31,7 @@ window.mobileAndTabletCheck = function () {
 };
 if (window.mobileAndTabletCheck()) {
     isMobile = true;
+    containerEl.setAttribute("style", `height: ${window.innerHeight}`);
 }
 
 startBtn.addEventListener("click", () => {
