@@ -1,9 +1,3 @@
-// TODO List
-// Background Customization
-// Simon Color Changing
-// Database High Score
-// Fix Sounds
-
 const containerEl = document.getElementById("window-height");
 const startBtn = document.getElementById("start");
 const countEl = document.getElementById("count");
@@ -15,6 +9,8 @@ const audioElOne = document.getElementById("audio1");
 const audioElTwo = document.getElementById("audio2");
 const audioElThree = document.getElementById("audio3");
 const audioElFour = document.getElementById("audio4");
+const iconEl = document.getElementById("icon");
+const modalEl = document.getElementById("modal");
 
 let elementArray = [leftTopEl, rightTopEl, leftBottomEl, rightBottomEl];
 let gameArray = [];
@@ -159,3 +155,12 @@ const userResponse = async ({ target }) => {
 elementArray.forEach(element => {
     element.addEventListener("click", userResponse);
 });
+
+iconEl.addEventListener("click", () => {
+    modalEl.style.display = "block"
+});
+window.onclick = ({ target }) => {
+    if (target === modalEl) {
+        modalEl.style.display = "none";
+    }
+}

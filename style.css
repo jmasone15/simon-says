@@ -102,6 +102,23 @@ body {
     z-index: 2;
 }
 
+.color-pallette {
+    position: fixed;
+    top: 5vh;
+    left: 93vw;
+    font-size: 60px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.color-pallette:hover {
+    color: aqua;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+}
+
 .background {
     border-radius: 50%;
     position: fixed;
@@ -140,6 +157,58 @@ body {
     color: rgb(204, 25, 25);
     padding: 15px 10px;
     margin: 0;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 5;
+    padding-top: 175px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #c0bcbc;
+    margin: auto;
+    padding: 20px;
+    border: 5px solid #000000;
+    width: 30%;
+    border-radius: 15px;
+}
+
+.modal-content h1 {
+    text-align: center;
+}
+
+.color-schemes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.scheme {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.scheme:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
 }
 
 @media only screen and (max-width: 765px) {
@@ -201,5 +270,9 @@ body {
         background-color: rgb(159, 153, 153);
         border: 5px solid black;
         z-index: 2;
+    }
+
+    .color-pallette {
+        display: none !important;
     }
 }
