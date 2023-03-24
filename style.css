@@ -12,11 +12,6 @@ body {
     width: 100vw;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
 .button {
     padding: 25px;
     border-color: black;
@@ -53,7 +48,6 @@ body {
 }
 
 #left-top {
-    background-color: green;
     border-width: 0px 5px 5px 0px;
     border-radius: 350px 20px 0 20px;
     -moz-border-radius: 350px 20px 0 20px;
@@ -61,7 +55,6 @@ body {
 }
 
 #right-top {
-    background-color: red;
     border-width: 0px 0px 5px 5px;
     border-radius: 20px 350px 20px 0;
     -moz-border-radius: 20px 350px 20px 0;
@@ -69,7 +62,6 @@ body {
 }
 
 #left-bottom {
-    background-color: yellow;
     border-width: 5px 5px 0px 0px;
     border-radius: 20px 0 20px 350px;
     -moz-border-radius: 20px 0 20px 350px;
@@ -77,7 +69,6 @@ body {
 }
 
 #right-bottom {
-    background-color: blue;
     border-width: 5px 0px 0px 5px;
     border-radius: 0 20px 350px 20px;
     -moz-border-radius: 0 20px 350px 20px;
@@ -109,14 +100,42 @@ body {
     font-size: 60px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    color: black;
+    -webkit-background-clip: text;
 }
 
 .color-pallette:hover {
-    color: aqua;
-    transform: scale(1.5);
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -moz-transform: scale(1.5);
+    color: transparent;
+    background-size: 800% 800%;
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    animation: rainbow 8s ease infinite;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+}
+
+.rainbow-text {
+    color: transparent;
+    background-size: 800% 800%;
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    -webkit-background-clip: text;
+    animation: rainbow 8s ease infinite;
+    text-decoration: underline;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 25%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 .background {
@@ -160,7 +179,7 @@ body {
 }
 
 .modal {
-    display: block;
+    display: none;
     position: fixed;
     z-index: 5;
     padding-top: 175px;
@@ -196,19 +215,156 @@ body {
 .scheme {
     height: 100px;
     width: 100px;
-    background-color: blue;
     border: 2px solid black;
     margin: 10px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .scheme:hover {
+    border-color: white;
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -moz-transform: scale(1.1);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    height: 100px;
+    width: 100px;
+    border: #000000 solid 1px;
+}
+
+#scheme-one-one {
+    background-color: #008000
+}
+#scheme-one-two {
+    background-color: #ff0000
+}
+#scheme-one-three {
+    background-color: #ffff00
+}
+#scheme-one-four {
+    background-color: #0000ff
+}
+
+#scheme-two-one {
+    background-color: #1AFFD5
+}
+#scheme-two-two {
+    background-color: #FC6DAB
+}
+#scheme-two-three {
+    background-color: #007FFF
+}
+#scheme-two-four {
+    background-color: #7D83FF
+}
+
+#scheme-three-one {
+    background-color: #97CC04
+}
+#scheme-three-two {
+    background-color: #F05D5E
+}
+#scheme-three-three {
+    background-color: #EEB902
+}
+#scheme-three-four {
+    background-color: #0F7173
+}
+
+#scheme-four-one {
+    background-color: #001F54
+}
+#scheme-four-two {
+    background-color: #034078
+}
+#scheme-four-three {
+    background-color: #1282A2
+}
+#scheme-four-four {
+    background-color: #0A1128
+}
+
+#scheme-five-one {
+    background-color: #7BC950
+}
+#scheme-five-two {
+    background-color: #D81E5B
+}
+#scheme-five-three {
+    background-color: #7CE577
+}
+#scheme-five-four {
+    background-color: #3A3335
+}
+
+#scheme-six-one {
+    background-color: #4F0147
+}
+#scheme-six-two {
+    background-color: #8B85C1
+}
+#scheme-six-three {
+    background-color: #D4CDF4
+}
+#scheme-six-four {
+    background-color: #3A015C
+}
+
+#scheme-seven-one {
+    background-color: #A27035
+}
+#scheme-seven-two {
+    background-color: #B88B4A
+}
+#scheme-seven-three {
+    background-color: #DDCA7D
+}
+#scheme-seven-four {
+    background-color: #533E2D
+}
+
+#scheme-eight-one {
+    background-color: #8EA604
+}
+#scheme-eight-two {
+    background-color: #FF7F11
+}
+#scheme-eight-three {
+    background-color: #F00699
+}
+#scheme-eight-four {
+    background-color: #454E9E
+}
+
+#scheme-nine-one {
+    background-color: #000000;
+    border-color: white;
+}
+#scheme-nine-two {
+    background-color: #000000;
+    border-color: white;
+}
+#scheme-nine-three {
+    background-color: #000000;
+    border-color: white;
+}
+#scheme-nine-four {
+    background-color: #000000;
+    border-color: white;
 }
 
 @media only screen and (max-width: 765px) {

@@ -12,6 +12,8 @@ const audioElFour = document.getElementById("audio4");
 const iconEl = document.getElementById("icon");
 const modalEl = document.getElementById("modal");
 
+let styleArray = [["#008000", "#ff0000", "#ffff00", "#0000ff"], ["#1AFFD5", "#FC6DAB", "#007FFF", "#7D83FF"], ["#97CC04", "#F05D5E", "#EEB902", "#0F7173"], ["#001F54", "#034078", "#1282A2", "#0A1128"], ["#7BC950", "#D81E5B", "#7CE577", "#3A3335"], ["#4F0147", "#8B85C1", "#D4CDF4", "#3A015C"], ["#A27035", "#B88B4A", "#DDCA7D", "#533E2D"], ["#8EA604", "#FF7F11", "#F00699", "#454E9E"], ["#000000", "#000000", "#000000", "#000000"]];
+let styleIndex = parseInt(localStorage.getItem("style")) || 0;
 let elementArray = [leftTopEl, rightTopEl, leftBottomEl, rightBottomEl];
 let gameArray = [];
 let userTurn = false;
@@ -29,15 +31,6 @@ if (window.mobileAndTabletCheck()) {
     isMobile = true;
     containerEl.setAttribute("style", `height: ${window.innerHeight}`);
 }
-
-startBtn.addEventListener("click", () => {
-    startBtn.setAttribute("style", "display: none;");
-    countEl.setAttribute("style", "");
-
-    score = 0;
-    countEl.innerText = score;
-    gameFunction();
-});
 
 const generateColor = () => {
     const number = Math.floor(Math.random() * 4) + 1;
@@ -98,7 +91,9 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const gameFunction = async () => {
 
     userClickCount = 0;
-    userTurn = false
+    userTurn = false;
+
+    iconEl.style.display = "none";
 
     generateColor();
 
@@ -145,6 +140,7 @@ const userResponse = async ({ target }) => {
     } else {
         gameArray = [];
         userTurn = false;
+        iconEl.style.display = "block";
         elementArray.forEach(element => {
             element.setAttribute("class", "button")
         });
@@ -152,10 +148,43 @@ const userResponse = async ({ target }) => {
     }
 }
 
-elementArray.forEach(element => {
-    element.addEventListener("click", userResponse);
-});
+const updateScheme = ({ target }) => {
+    const targetScheme = parseInt(target.parentElement.parentElement.getAttribute("num"));
 
+    if (targetScheme !== styleIndex) {
+        styleIndex = targetScheme;
+        localStorage.setItem("style", styleIndex);
+        
+        elementArray.forEach((element, index) => {
+            element.style.backgroundColor = styleArray[styleIndex][index];
+            if (styleIndex == 8) {
+                document.getElementById("back-circle").setAttribute("style", "background-color: grey");
+                document.body.style.backgroundColor = "grey"
+                elementArray.forEach(element => {
+                    element.style.borderColor = "grey";
+                })
+            } else {
+                document.getElementById("back-circle").setAttribute("style", "background-color: black");
+                document.body.style.backgroundColor = "white"
+                elementArray.forEach(element => {
+                    element.style.borderColor = "black";
+                })
+            }
+        });
+        modalEl.style.display = "none";
+    }
+
+
+}
+
+// Event Listeners
+elementArray.forEach((element, index) => {
+    element.addEventListener("click", userResponse);
+    element.style.backgroundColor = styleArray[styleIndex][index];
+});
+document.querySelectorAll(".scheme").forEach((element) => {
+    element.addEventListener("click", updateScheme);
+});
 iconEl.addEventListener("click", () => {
     modalEl.style.display = "block"
 });
@@ -163,4 +192,12 @@ window.onclick = ({ target }) => {
     if (target === modalEl) {
         modalEl.style.display = "none";
     }
-}
+};
+startBtn.addEventListener("click", () => {
+    startBtn.setAttribute("style", "display: none;");
+    countEl.setAttribute("style", "");
+
+    score = 0;
+    countEl.innerText = score;
+    gameFunction();
+});
